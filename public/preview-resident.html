@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض تجريبي - لوحة الساكن | داري</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f5f7fa;
+            --sidebar-bg: #3D4F5F;
+            --card-bg: #fff;
+            --text-color: #333;
+        }
+        * { font-family: 'Tajawal', sans-serif; }
+        body { background: var(--bg-color); color: var(--text-color); margin: 0; }
+        .sidebar {
+            background: var(--sidebar-bg);
+            height: 100vh;
+            width: 260px;
+            position: fixed;
+            right: 0;
+            top: 0;
+            overflow-y: auto;
+        }
+        .sidebar .nav-link {
+            color: rgba(255,255,255,0.8);
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin: 4px 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+        }
+        .nav-section { color: rgba(255,255,255,0.5); font-size: 0.75rem; padding: 15px 20px 5px; }
+        .main-content { margin-right: 260px; padding: 20px; }
+        .top-bar { background: var(--sidebar-bg); padding: 12px 20px; color: #fff; margin: -20px -20px 20px; }
+        .card { background: var(--card-bg); border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .avatar-circle { width: 40px; height: 40px; border-radius: 50%; background: #6c5ce7; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold; }
+        .msg-badge { position: absolute; top: -5px; right: -5px; background: #dc3545; color: #fff; border-radius: 50%; width: 18px; height: 18px; font-size: 0.7rem; display: flex; align-items: center; justify-content: center; }
+        .chat-bubble { max-width: 70%; padding: 12px 18px; border-radius: 18px; margin-bottom: 10px; }
+        .chat-sent { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; border-bottom-left-radius: 5px; }
+        .chat-received { background: #f0f0f0; border-bottom-right-radius: 5px; }
+        .notification-item { padding: 15px; border-bottom: 1px solid #eee; }
+        .notification-item:hover { background: #f8f9fa; }
+        .notification-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .tab-custom { border: none; background: #e9ecef; border-radius: 10px; padding: 8px 20px; margin-left: 5px; cursor: pointer; }
+        .tab-custom.active { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; }
+        .announcement-card { border-right: 4px solid; padding: 15px; margin-bottom: 15px; border-radius: 10px; background: #fff; }
+        .announcement-emergency { border-color: #dc3545; }
+        .announcement-maintenance { border-color: #ffc107; }
+        .announcement-general { border-color: #0d6efd; }
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main-content { margin-right: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="text-center py-4">
+            <div class="bg-white rounded-3 p-2 d-inline-block">
+                <h4 class="mb-0 text-dark">داري</h4>
+            </div>
+        </div>
+        <nav class="nav flex-column">
+            <a href="#" class="nav-link"><i class="bi bi-speedometer2"></i> لوحة التحكم</a>
+            <div class="nav-section">خدماتي</div>
+            <a href="#" class="nav-link"><i class="bi bi-door-open"></i> وحدتي</a>
+            <a href="#" class="nav-link"><i class="bi bi-tools"></i> طلبات الصيانة</a>
+            <a href="#" class="nav-link"><i class="bi bi-receipt"></i> فواتيري</a>
+            <a href="#" class="nav-link"><i class="bi bi-chat-dots"></i> الشكاوى</a>
+            <div class="nav-section">التواصل</div>
+            <a href="#" class="nav-link active"><i class="bi bi-envelope"></i> الرسائل <span class="badge bg-danger ms-auto">1</span></a>
+            <a href="#" class="nav-link"><i class="bi bi-bell"></i> الإشعارات <span class="badge bg-warning ms-auto">3</span></a>
+            <a href="#" class="nav-link"><i class="bi bi-megaphone"></i> الإعلانات</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="top-bar d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+                <div class="avatar-circle">أ</div>
+                <span>مرحباً، أحمد محمد (ساكن)</span>
+            </div>
+            <div class="d-flex gap-2">
+                <div class="position-relative">
+                    <button class="btn btn-light btn-sm rounded-circle"><i class="bi bi-envelope"></i></button>
+                    <span class="msg-badge">1</span>
+                </div>
+                <div class="position-relative">
+                    <button class="btn btn-light btn-sm rounded-circle"><i class="bi bi-bell"></i></button>
+                    <span class="msg-badge">3</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="mb-4">
+            <button class="tab-custom" onclick="showTab('announcements')">الإعلانات</button>
+            <button class="tab-custom" onclick="showTab('notifications')">الإشعارات</button>
+            <button class="tab-custom active" onclick="showTab('messages')">الرسائل</button>
+        </div>
+
+        <!-- Messages Tab -->
+        <div id="messages-tab">
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar-circle me-3" style="background:#3D4F5F;">و</div>
+                        <div>
+                            <h6 class="mb-0">وليد العنسي</h6>
+                            <small class="text-muted">مالك المبنى</small>
+                        </div>
+                    </div>
+                    <span class="badge bg-success">متصل</span>
+                </div>
+                <div class="card-body" style="height: 400px; overflow-y: auto; background: #f8f9fa;">
+                    <div class="d-flex justify-content-start mb-3">
+                        <div class="chat-bubble chat-sent">
+                            السلام عليكم، عندي مشكلة في التكييف لا يعمل بشكل جيد
+                            <div class="text-light small mt-1">10:30 ص ✓✓</div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mb-3">
+                        <div class="chat-bubble chat-received">
+                            وعليكم السلام، سأرسل فني الصيانة اليوم إن شاء الله
+                            <div class="text-muted small mt-1">10:35 ص</div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-start mb-3">
+                        <div class="chat-bubble chat-sent">
+                            شكراً جزيلاً، متى سيصل تقريباً؟
+                            <div class="text-light small mt-1">10:40 ص ✓✓</div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mb-3">
+                        <div class="chat-bubble chat-received">
+                            بين الساعة 2 و 4 عصراً
+                            <div class="text-muted small mt-1">10:42 ص</div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-start mb-3">
+                        <div class="chat-bubble chat-sent">
+                            تمام، سأكون موجود. شكراً لك
+                            <div class="text-light small mt-1">10:45 ص ✓</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="اكتب رسالتك...">
+                        <button class="btn btn-primary"><i class="bi bi-send"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications Tab -->
+        <div id="notifications-tab" style="display:none;">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-bell me-2"></i>إشعاراتي</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="notification-item d-flex align-items-start bg-light">
+                        <div class="notification-icon bg-success bg-opacity-10 me-3">
+                            <i class="bi bi-check-circle text-success"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between">
+                                <strong>تم قبول طلب الصيانة</strong>
+                                <small class="text-muted">منذ ساعة</small>
+                            </div>
+                            <p class="text-muted mb-1 small">تم قبول طلب صيانة التكييف وسيصل الفني اليوم</p>
+                            <span class="badge bg-success">مكتمل</span>
+                        </div>
+                    </div>
+                    <div class="notification-item d-flex align-items-start bg-light">
+                        <div class="notification-icon bg-info bg-opacity-10 me-3">
+                            <i class="bi bi-envelope text-info"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between">
+                                <strong>رسالة جديدة</strong>
+                                <small class="text-muted">منذ ساعتين</small>
+                            </div>
+                            <p class="text-muted mb-1 small">لديك رسالة جديدة من المالك</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">عرض الرسالة</a>
+                        </div>
+                    </div>
+                    <div class="notification-item d-flex align-items-start">
+                        <div class="notification-icon me-3" style="background: rgba(102,126,234,0.1);">
+                            <i class="bi bi-megaphone" style="color: #667eea;"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between">
+                                <strong>إعلان جديد</strong>
+                                <small class="text-muted">اليوم 9:00 ص</small>
+                            </div>
+                            <p class="text-muted mb-1 small">صيانة المصاعد يوم الأحد</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Announcements Tab -->
+        <div id="announcements-tab" style="display:none;">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-megaphone me-2"></i>إعلانات المبنى</h5>
+                </div>
+                <div class="card-body">
+                    <div class="announcement-card announcement-maintenance">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-tools fs-4 text-warning me-3"></i>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h6 class="mb-1">صيانة المصاعد</h6>
+                                    <span class="badge bg-warning">صيانة</span>
+                                </div>
+                                <p class="mb-2">سيتم صيانة المصاعد يوم الأحد من الساعة 9 صباحاً حتى 2 ظهراً. نرجو استخدام الدرج خلال هذه الفترة.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted"><i class="bi bi-clock me-1"></i>اليوم 9:00 ص</small>
+                                    <small class="text-muted"><i class="bi bi-person me-1"></i>إدارة المبنى</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="announcement-card announcement-general">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-droplet fs-4 text-primary me-3"></i>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h6 class="mb-1">انقطاع المياه للصيانة</h6>
+                                    <span class="badge bg-primary">عام</span>
+                                </div>
+                                <p class="mb-2">سيتم قطع المياه غداً من الساعة 10 صباحاً حتى 1 ظهراً لأعمال الصيانة الدورية.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted"><i class="bi bi-clock me-1"></i>أمس 3:00 م</small>
+                                    <small class="text-muted"><i class="bi bi-person me-1"></i>إدارة المبنى</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="announcement-card announcement-emergency">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-exclamation-triangle fs-4 text-danger me-3"></i>
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h6 class="mb-1">تنبيه أمني</h6>
+                                    <span class="badge bg-danger">طوارئ</span>
+                                </div>
+                                <p class="mb-2">نرجو التأكد من إغلاق الأبواب والنوافذ جيداً. تم رصد حالات سرقة في المنطقة المجاورة.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted"><i class="bi bi-clock me-1"></i>منذ 3 أيام</small>
+                                    <small class="text-muted"><i class="bi bi-person me-1"></i>إدارة المبنى</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showTab(tab) {
+            document.querySelectorAll('[id$="-tab"]').forEach(el => el.style.display = 'none');
+            document.getElementById(tab + '-tab').style.display = 'block';
+            document.querySelectorAll('.tab-custom').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
