@@ -13,10 +13,10 @@ class UserSeeder extends Seeder
         // إنشاء حساب المدير العام (Admin) مع كلمة مرور ثابتة
         // Admin - المدير العام
         $admin = User::create([
-            'name' => 'وليد العنسي',
-            'email' => 'Waleedalansi2023@gmail.com',
-            'password' => Hash::make('lwma773157823'),
-            'phone' => '773157823',
+            'name' => 'عقبه العديني',
+            'email' => 'oalodinee@gmail.com',
+            'password' => Hash::make('lwma775028636'),
+            'phone' => '775028636',
             'is_active' => true,
             'email_verified_at' => now(),
         ]);

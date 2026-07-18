@@ -24,8 +24,8 @@ class ChatbotController extends Controller
 - تساعد السكان في استفساراتهم
 
 معلومات التواصل:
-- هاتف الإدارة: 773157823
-- البريد: Waleedalansi2023@gmail.com
+- هاتف الإدارة: 775028636
+- البريد: oalodinee@gmail.com
 - أوقات العمل: 8 صباحاً - 5 مساءً
 
 الخدمات المتوفرة للسكان:
@@ -94,7 +94,7 @@ class ChatbotController extends Controller
             } else {
                 return response()->json([
                     'success' => false,
-                    'reply' => 'عذراً، الخدمة غير متاحة حالياً. تواصل مع الإدارة مباشرة على 773157823'
+                    'reply' => 'عذراً، الخدمة غير متاحة حالياً. تواصل مع الإدارة مباشرة على 775028636'
                 ]);
             }
         } catch (\Exception $e) {
